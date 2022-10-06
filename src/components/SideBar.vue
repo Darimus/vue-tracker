@@ -7,11 +7,11 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue';
+import { defineComponent } from 'vue';
 
-  export default defineComponent({
-    name: "SideBar"
-  })
+export default defineComponent({
+  name: "SideBar"
+})
 </script>
 
 <style scoped>
@@ -22,6 +22,7 @@ header {
   height: 100vh;
 
 }
+
 .sidebar-logo {
   width: 110px;
   height: 110px;
