@@ -7,9 +7,8 @@
 
       <div class="column">
         <div class="is-flex is-align-items-center is-justify-content-space-between">
-          <section>
-            <strong>{{ elapsedTime }}</strong>
-          </section>
+
+          <StopwatchComponent :timeInSeconds="timeInSeconds"></StopwatchComponent>
 
           <button class="button" @click="start">
             <span class="icon">
@@ -40,35 +39,28 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import StopwatchComponent from './stopwatchComponent.vue'
 
 export default defineComponent({
   name: "FormComponent",
+  components: { StopwatchComponent },
   data() {
     return {
       timeInSeconds: 0,
       referenceForStop: 0
-    }
+    };
   },
-
-  computed: {
-    elapsedTime(): string {
-      return new Date(this.timeInSeconds * 1000).toISOString().substr(11, 8);
-    }
-  },
-
   methods: {
     start() {
       this.referenceForStop = setInterval(() => {
-        this.timeInSeconds += 1
-      }, 1000)
+        this.timeInSeconds += 1;
+      }, 1000);
     },
-
     pause() {
-      clearInterval(this.referenceForStop)
+      clearInterval(this.referenceForStop);
     },
-
     stop() {
-      clearInterval(this.referenceForStop)
+      clearInterval(this.referenceForStop);
     }
   }
 })
