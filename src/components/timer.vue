@@ -3,21 +3,14 @@
 
     <StopwatchComponent :timeInSeconds="timeInSeconds"></StopwatchComponent>
 
-    <button class="button" @click="start">
+    <button class="button" @click="start" :disabled="timerStart">
       <span class="icon">
         <i class="fas fa-play"></i>
       </span>
       <span>play</span>
     </button>
 
-    <button class="button" @click="pause">
-      <span class="icon">
-        <i class="fas fa-pause"></i>
-      </span>
-      <span>pause</span>
-    </button>
-
-    <button class="button" @click="stop">
+    <button class="button" @click="stop" :disabled="!timerStart">
       <span class="icon">
         <i class="fas fa-stop"></i>
       </span>
@@ -36,19 +29,20 @@ export default defineComponent({
   data() {
     return {
       timeInSeconds: 0,
-      referenceForStop: 0
+      referenceForStop: 0,
+      timerStart: false
     };
   },
   methods: {
     start() {
+      this.timerStart = true
       this.referenceForStop = setInterval(() => {
         this.timeInSeconds += 1;
       }, 1000);
     },
-    pause() {
-      clearInterval(this.referenceForStop);
-    },
+
     stop() {
+      this.timerStart = false;
       clearInterval(this.referenceForStop);
     }
   }
