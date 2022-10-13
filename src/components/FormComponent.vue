@@ -24,7 +24,6 @@ export default defineComponent({
       descriptionTask: ''
     }
   },
-
   methods: {
     finishTask(timeInSeconds: number): void {
       console.log('Tempo decorrdio: ', timeInSeconds);
